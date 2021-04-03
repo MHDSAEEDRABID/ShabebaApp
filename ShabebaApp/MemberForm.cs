@@ -48,7 +48,8 @@ namespace ShabebaApp
         {
             string file = @"Resources\ShabebaDB.db";
             string dir = Path.GetFullPath(file);
-            return dir;
+            string demo = @"D:\AllProjects\ShabebaApp\ShabebaApp\Resources\ShabebaDB.db";
+            return demo;
         }
         List<Member> members = new List<Member>();
         private DataTable LoadMemberForm()
@@ -105,6 +106,7 @@ namespace ShabebaApp
                 cmd.Parameters.AddWithValue("@Description", Regex.Replace(txtDescription.Text, @"\s+", " "));
                 connection.Open();
                 cmd.ExecuteNonQuery();
+                connection.Close();
                 Filldgv(LoadMemberForm(), dgv);
                 btnReset.PerformClick();
                 MessageBox.Show("تمت إضافة العضو");
@@ -116,10 +118,12 @@ namespace ShabebaApp
             txtName.Clear();
             txtLastName.Clear();
             txtId.Clear();
+            txtMotherName.Clear();
             txtAddress.Clear();
             txtFatherName.Clear();
             txtPhoneNumber.Clear();
             dtp.Value = DateTime.Now;
+            cbxSchool.SelectedIndex = 0;
             txtAddress.Clear(); txtDescription.Text = "لا يوجد وصف";
             txtId.ReadOnly = false;
             btnAdd.Enabled = true;
@@ -155,15 +159,62 @@ namespace ShabebaApp
         {
             if (MessageBox.Show("هل تريد حذف هذا السجل", "", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                using (IDbConnection dbConnection = new SQLiteConnection (ConnectionString()))
-                {
-                    int Id = Convert.ToInt32(txtId.Text);
-                    dbConnection.Execute("DELETE FROM [Members] Where Id=@Id", new { Id });
-                }
+                SQLiteConnection connection = new SQLiteConnection($@"Data Source={ConnectionString()}; Version = 3");
+                string DeleteCommand = "DELETE FROM Members WHERE Id =@Id";
+                SQLiteCommand cmd = new SQLiteCommand(DeleteCommand, connection);
+                cmd.Parameters.AddWithValue("@Id", Convert.ToInt32(txtId.Text));
+                connection.Open();
+                cmd.ExecuteNonQuery();
+                connection.Close();
                 Filldgv(LoadMemberForm(), dgv);
                 btnReset.PerformClick();
                 MessageBox.Show("تمت عملية الحذف بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtId.ReadOnly = true;
+            btnAdd.Enabled = false;
+            txtId.Text = dgv.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+            txtName.Text = dgv.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+            txtLastName.Text = dgv.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+            txtFatherName.Text = dgv.Rows[e.RowIndex].Cells[3].FormattedValue.ToString();
+            txtMotherName.Text = dgv.Rows[e.RowIndex].Cells[4].FormattedValue.ToString();
+            txtPhoneNumber.Text = dgv.Rows[e.RowIndex].Cells[5].FormattedValue.ToString();
+            dtp.Value = Convert.ToDateTime(dgv.Rows[e.RowIndex].Cells[6].Value);
+            txtAddress.Text = dgv.Rows[e.RowIndex].Cells[7].FormattedValue.ToString();
+            cbxSchool.Text = dgv.Rows[e.RowIndex].Cells[8].FormattedValue.ToString();
+            txtDescription.Text = dgv.Rows[e.RowIndex].Cells[9].FormattedValue.ToString();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            txtId.ReadOnly = false;
+            btnAdd.Enabled = true;
+            string UpdateCommand = @"UPDATE [Members] SET FirstName=@FirstName ,LastName=@LastName,FatherName=@FatherName , MotherName=@MotherName,PhoneNumber=@PhoneNumber,AffiliationDate=@AffiliationDate,Address=@Address,SchoolId=@SchoolId,Description=@Description WHERE Id=@Id";
+            SQLiteConnection connection = new SQLiteConnection($@"Data Source={ConnectionString()}; Version = 3");
+            SQLiteCommand cmd = new SQLiteCommand(UpdateCommand,connection);
+            cmd.Parameters.AddWithValue("@FirstName", txtName.Text);
+            cmd.Parameters.AddWithValue("@FatherName", txtFatherName.Text);
+            cmd.Parameters.AddWithValue("@MotherName", txtMotherName.Text);
+            cmd.Parameters.AddWithValue("@LastName", txtLastName.Text);
+            cmd.Parameters.AddWithValue("@PhoneNumber", txtPhoneNumber.Text);
+            string Months = dtp.Value.Month.ToString();
+            string Days = dtp.Value.Day.ToString();
+            string Year = dtp.Value.Year.ToString();
+            cmd.Parameters.AddWithValue("@AffiliationDate", $"{Year}-{Months}-{Days}");
+            cmd.Parameters.AddWithValue("@Address", txtAddress.Text);
+            cmd.Parameters.AddWithValue("@SchoolId", cbxSchool.SelectedIndex+1);
+            cmd.Parameters.AddWithValue(@"Description", txtDescription.Text);
+            cmd.Parameters.AddWithValue("@Id", Convert.ToInt32(txtId.Text));
+            connection.Open();
+            cmd.ExecuteNonQuery();
+            connection.Close();
+            Filldgv(LoadMemberForm(), dgv);
+            btnReset.PerformClick();
+            MessageBox.Show("تمت تعديل بيانات العضو ","نجاح",MessageBoxButtons.OK,MessageBoxIcon.Information);
+        }
     }
 }
+

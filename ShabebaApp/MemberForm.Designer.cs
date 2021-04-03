@@ -66,6 +66,7 @@ namespace ShabebaApp
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -235,6 +236,7 @@ namespace ShabebaApp
             this.btnEdit.TabIndex = 22;
             this.btnEdit.Text = "تعديل";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -315,12 +317,14 @@ namespace ShabebaApp
             this.Column6,
             this.Column7,
             this.Column8,
-            this.Column9});
+            this.Column9,
+            this.Column10});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv.Location = new System.Drawing.Point(0, 386);
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(1180, 314);
             this.dgv.TabIndex = 30;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // Column1
             // 
@@ -374,6 +378,12 @@ namespace ShabebaApp
             this.Column9.HeaderText = "اسم المدرسة";
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "الوصف";
+            this.Column10.Name = "Column10";
+            this.Column10.ReadOnly = true;
             // 
             // MemberForm
             // 
@@ -458,5 +468,6 @@ namespace ShabebaApp
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
     }
 }
