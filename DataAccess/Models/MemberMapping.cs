@@ -16,7 +16,7 @@ namespace DataAccess.Models
         public string PhoneNumber { get; set; }
         public string AffiliationDate { get; set; }
         public string Address { get; set; }
-        public string School { get; set; }
+        public string nane { get; set; }
         public string Description { get; set; }
     }
 }

@@ -40,22 +40,22 @@ namespace ShabebaApp
             this.label9 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtLastname = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.txtMotherName = new System.Windows.Forms.TextBox();
             this.txtFatherName = new System.Windows.Forms.TextBox();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.cbxSchool = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -164,12 +164,12 @@ namespace ShabebaApp
             this.txtName.Size = new System.Drawing.Size(174, 34);
             this.txtName.TabIndex = 10;
             // 
-            // txtLastname
+            // txtLastName
             // 
-            this.txtLastname.Location = new System.Drawing.Point(836, 186);
-            this.txtLastname.Name = "txtLastname";
-            this.txtLastname.Size = new System.Drawing.Size(174, 34);
-            this.txtLastname.TabIndex = 11;
+            this.txtLastName.Location = new System.Drawing.Point(836, 186);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(174, 34);
+            this.txtLastName.TabIndex = 11;
             // 
             // txtPhoneNumber
             // 
@@ -210,46 +210,51 @@ namespace ShabebaApp
             // cbxSchool
             // 
             this.cbxSchool.FormattingEnabled = true;
+            this.cbxSchool.Items.AddRange(new object[] {
+            "عبد الله الطير"});
             this.cbxSchool.Location = new System.Drawing.Point(31, 186);
             this.cbxSchool.Name = "cbxSchool";
             this.cbxSchool.Size = new System.Drawing.Size(174, 34);
             this.cbxSchool.TabIndex = 19;
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(488, 313);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 50);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "إضافة";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(488, 313);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(98, 50);
+            this.btnAdd.TabIndex = 20;
+            this.btnAdd.Text = "إضافة";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button3
+            // btnEdit
             // 
-            this.button3.Location = new System.Drawing.Point(336, 313);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 50);
-            this.button3.TabIndex = 22;
-            this.button3.Text = "تعديل";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(336, 313);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(98, 50);
+            this.btnEdit.TabIndex = 22;
+            this.btnEdit.Text = "تعديل";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnDelete
             // 
-            this.button2.Location = new System.Drawing.Point(183, 313);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 50);
-            this.button2.TabIndex = 23;
-            this.button2.Text = "حذف";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(183, 313);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(98, 50);
+            this.btnDelete.TabIndex = 23;
+            this.btnDelete.Text = "حذف";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button4
+            // btnReset
             // 
-            this.button4.Location = new System.Drawing.Point(31, 313);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(98, 50);
-            this.button4.TabIndex = 24;
-            this.button4.Text = "مسح";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(31, 313);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(98, 50);
+            this.btnReset.TabIndex = 24;
+            this.btnReset.Text = "مسح";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // label7
             // 
@@ -284,14 +289,15 @@ namespace ShabebaApp
             this.label10.TabIndex = 27;
             this.label10.Text = "ابحث";
             // 
-            // button5
+            // btnExport
             // 
-            this.button5.Location = new System.Drawing.Point(31, 248);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(250, 50);
-            this.button5.TabIndex = 29;
-            this.button5.Text = "تصدير الى جدول اكسيل";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnExport.Location = new System.Drawing.Point(31, 248);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(250, 50);
+            this.btnExport.TabIndex = 29;
+            this.btnExport.Text = "تصدير الى جدول اكسيل";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // dgv
             // 
@@ -374,22 +380,22 @@ namespace ShabebaApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgv);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.cbxSchool);
             this.Controls.Add(this.dtp);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.txtMotherName);
             this.Controls.Add(this.txtFatherName);
-            this.Controls.Add(this.txtLastname);
+            this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.labelScool);
@@ -426,22 +432,22 @@ namespace ShabebaApp
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtLastname;
+        private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.TextBox txtMotherName;
         private System.Windows.Forms.TextBox txtFatherName;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.DateTimePicker dtp;
         private System.Windows.Forms.ComboBox cbxSchool;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
