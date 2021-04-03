@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShabebaApp", "ShabebaApp\ShabebaApp.csproj", "{50784021-3B79-4B0C-8391-33139C0CE9FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{27EC7FA1-0173-4039-8010-38AE8412CD59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50784021-3B79-4B0C-8391-33139C0CE9FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50784021-3B79-4B0C-8391-33139C0CE9FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50784021-3B79-4B0C-8391-33139C0CE9FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50784021-3B79-4B0C-8391-33139C0CE9FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27EC7FA1-0173-4039-8010-38AE8412CD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27EC7FA1-0173-4039-8010-38AE8412CD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27EC7FA1-0173-4039-8010-38AE8412CD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27EC7FA1-0173-4039-8010-38AE8412CD59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {58E398EB-971D-47C6-9607-4C8FB6037BA3}
+	EndGlobalSection
+EndGlobal
