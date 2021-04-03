@@ -27,6 +27,7 @@ namespace ShabebaApp
         {
             InitializeComponent();
         }
+        
         public bool ControlIsValid()
         {
             bool answer = false;
@@ -48,11 +49,10 @@ namespace ShabebaApp
         {
             string file = @"Resources\ShabebaDB.db";
             string dir = Path.GetFullPath(file);
-            string demo = @"D:\AllProjects\ShabebaApp\ShabebaApp\Resources\ShabebaDB.db";
-            return demo;
+            return dir;
         }
         List<Member> members = new List<Member>();
-        private DataTable LoadMemberForm()
+        public DataTable LoadMemberForm()
         {
             SQLiteConnection connection = new SQLiteConnection($@"Data Source={ConnectionString()}; Version = 3");
             SQLiteCommand cmd = new SQLiteCommand("SELECT Members.Id, Members.FirstName, Members.LastName, Members.FatherName, Members.MotherName, Members.PhoneNumber, Members.AffiliationDate, Members.Address, Schools.name , Members.Description FROM[Members] JOIN [Schools] ON Members.SchoolId = Schools.Id", connection);
@@ -63,8 +63,21 @@ namespace ShabebaApp
             connection.Close();
             return table;
         }
+        public void LoadComboBox()
+        {
+            List<School> schools = new List<School>();
+            using (IDbConnection dbConnection = new SQLiteConnection($@"Data Source={ConnectionString()}; Version = 3"))
+            {
+                schools = dbConnection.Query<School>("SELECT * FROM Schools").ToList();
+            }
+            cbxSchool.DataSource = schools;
+            cbxSchool.ValueMember = "Id";
+            cbxSchool.DisplayMember = "name";
+            cbxSchool.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
         private void MemberForm_Load(object sender, EventArgs e)
         {
+            LoadComboBox();
             cbxSchool.SelectedIndex = 0;
             Filldgv(LoadMemberForm(), dgv);
         }
@@ -108,6 +121,8 @@ namespace ShabebaApp
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 Filldgv(LoadMemberForm(), dgv);
+                SchoolForm frm = new SchoolForm();
+                Filldgv(frm.GetSchools(), frm.dgv);
                 btnReset.PerformClick();
                 MessageBox.Show("تمت إضافة العضو");
             }
@@ -167,6 +182,8 @@ namespace ShabebaApp
                 cmd.ExecuteNonQuery();
                 connection.Close();
                 Filldgv(LoadMemberForm(), dgv);
+                SchoolForm frm = new SchoolForm();
+                Filldgv(frm.GetSchools(), frm.dgv);
                 btnReset.PerformClick();
                 MessageBox.Show("تمت عملية الحذف بنجاح", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -212,6 +229,8 @@ namespace ShabebaApp
             cmd.ExecuteNonQuery();
             connection.Close();
             Filldgv(LoadMemberForm(), dgv);
+            SchoolForm frm = new SchoolForm();
+            Filldgv(frm.GetSchools(), frm.dgv);
             btnReset.PerformClick();
             MessageBox.Show("تمت تعديل بيانات العضو ","نجاح",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }

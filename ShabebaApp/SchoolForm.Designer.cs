@@ -30,23 +30,23 @@ namespace ShabebaApp
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtNameManager = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txtNumberOfSchool = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txtNumberOfManager = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,19 +68,22 @@ namespace ShabebaApp
             this.label1.TabIndex = 0;
             this.label1.Text = "رقم المدرسة";
             // 
-            // textBox1
+            // txtId
             // 
-            this.textBox1.Location = new System.Drawing.Point(863, 31);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(145, 34);
-            this.textBox1.TabIndex = 2;
+            this.txtId.Location = new System.Drawing.Point(837, 34);
+            this.txtId.MaxLength = 8;
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(171, 34);
+            this.txtId.TabIndex = 2;
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
-            // textBox2
+            // txtName
             // 
-            this.textBox2.Location = new System.Drawing.Point(863, 104);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(145, 34);
-            this.textBox2.TabIndex = 4;
+            this.txtName.Location = new System.Drawing.Point(837, 104);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(171, 34);
+            this.txtName.TabIndex = 4;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // label3
             // 
@@ -91,12 +94,13 @@ namespace ShabebaApp
             this.label3.TabIndex = 3;
             this.label3.Text = "اسم المدرسة";
             // 
-            // textBox5
+            // txtNameManager
             // 
-            this.textBox5.Location = new System.Drawing.Point(488, 104);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(145, 34);
-            this.textBox5.TabIndex = 10;
+            this.txtNameManager.Location = new System.Drawing.Point(462, 104);
+            this.txtNameManager.Name = "txtNameManager";
+            this.txtNameManager.Size = new System.Drawing.Size(171, 34);
+            this.txtNameManager.TabIndex = 10;
+            this.txtNameManager.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // label6
             // 
@@ -107,12 +111,13 @@ namespace ShabebaApp
             this.label6.TabIndex = 9;
             this.label6.Text = "اسم المدير";
             // 
-            // textBox6
+            // txtAddress
             // 
-            this.textBox6.Location = new System.Drawing.Point(488, 31);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(145, 34);
-            this.textBox6.TabIndex = 8;
+            this.txtAddress.Location = new System.Drawing.Point(462, 26);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(171, 34);
+            this.txtAddress.TabIndex = 8;
+            this.txtAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // label7
             // 
@@ -123,73 +128,81 @@ namespace ShabebaApp
             this.label7.TabIndex = 7;
             this.label7.Text = "العنوان";
             // 
-            // textBox8
+            // txtNumberOfSchool
             // 
-            this.textBox8.Location = new System.Drawing.Point(53, 104);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(145, 34);
-            this.textBox8.TabIndex = 16;
+            this.txtNumberOfSchool.Location = new System.Drawing.Point(53, 104);
+            this.txtNumberOfSchool.MaxLength = 10;
+            this.txtNumberOfSchool.Name = "txtNumberOfSchool";
+            this.txtNumberOfSchool.Size = new System.Drawing.Size(171, 34);
+            this.txtNumberOfSchool.TabIndex = 16;
+            this.txtNumberOfSchool.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(222, 107);
+            this.label9.Location = new System.Drawing.Point(248, 107);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 26);
             this.label9.TabIndex = 15;
             this.label9.Text = "هاتف المدرسة";
             // 
-            // textBox9
+            // txtNumberOfManager
             // 
-            this.textBox9.Location = new System.Drawing.Point(53, 31);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(145, 34);
-            this.textBox9.TabIndex = 14;
+            this.txtNumberOfManager.Location = new System.Drawing.Point(53, 31);
+            this.txtNumberOfManager.MaxLength = 10;
+            this.txtNumberOfManager.Name = "txtNumberOfManager";
+            this.txtNumberOfManager.Size = new System.Drawing.Size(171, 34);
+            this.txtNumberOfManager.TabIndex = 14;
+            this.txtNumberOfManager.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(222, 34);
+            this.label10.Location = new System.Drawing.Point(248, 34);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(104, 26);
             this.label10.TabIndex = 13;
             this.label10.Text = "هاتف المدير";
             // 
-            // button1
+            // btnAdd
             // 
-            this.button1.Location = new System.Drawing.Point(1037, 184);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 53);
-            this.button1.TabIndex = 17;
-            this.button1.Text = "إضافة";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAdd.Location = new System.Drawing.Point(1037, 184);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(113, 53);
+            this.btnAdd.TabIndex = 17;
+            this.btnAdd.Text = "إضافة";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // button2
+            // btnEdit
             // 
-            this.button2.Location = new System.Drawing.Point(824, 184);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 53);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "تعديل";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnEdit.Location = new System.Drawing.Point(824, 184);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(113, 53);
+            this.btnEdit.TabIndex = 18;
+            this.btnEdit.Text = "تعديل";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // button3
+            // btnDelete
             // 
-            this.button3.Location = new System.Drawing.Point(591, 184);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 53);
-            this.button3.TabIndex = 19;
-            this.button3.Text = "حذف";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelete.Location = new System.Drawing.Point(591, 184);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(113, 53);
+            this.btnDelete.TabIndex = 19;
+            this.btnDelete.Text = "حذف";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button4
+            // btnReset
             // 
-            this.button4.Location = new System.Drawing.Point(369, 184);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 53);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "مسح";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnReset.Location = new System.Drawing.Point(369, 184);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(113, 53);
+            this.btnReset.TabIndex = 20;
+            this.btnReset.Text = "مسح";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // button5
             // 
@@ -200,12 +213,13 @@ namespace ShabebaApp
             this.button5.Text = "تصدير إلى جدول اكسيل";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // txtSearch
             // 
-            this.textBox3.Location = new System.Drawing.Point(429, 272);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(244, 34);
-            this.textBox3.TabIndex = 23;
+            this.txtSearch.Location = new System.Drawing.Point(429, 272);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(244, 34);
+            this.txtSearch.TabIndex = 23;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label2
             // 
@@ -221,6 +235,7 @@ namespace ShabebaApp
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -235,6 +250,7 @@ namespace ShabebaApp
             this.dgv.Name = "dgv";
             this.dgv.Size = new System.Drawing.Size(1180, 352);
             this.dgv.TabIndex = 24;
+            this.dgv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellClick);
             // 
             // Column1
             // 
@@ -283,24 +299,24 @@ namespace ShabebaApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dgv);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox8);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnEdit);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.txtNumberOfSchool);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox9);
+            this.Controls.Add(this.txtNumberOfManager);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtNameManager);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Tajawal", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -317,25 +333,25 @@ namespace ShabebaApp
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtNameManager;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txtNumberOfSchool;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txtNumberOfManager;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dgv;
+        public System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

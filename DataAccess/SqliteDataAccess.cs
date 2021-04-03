@@ -34,10 +34,6 @@ ON Members.SchoolId = Schools.Id";
             }
             return members;
         }
-        private static string ConnectionString()
-        {
-            return ConfigurationManager.ConnectionStrings["connection"].ConnectionString;
-        }
         public static  DataTable LoadMembers()
         {
             SQLiteConnection connection = new SQLiteConnection();
