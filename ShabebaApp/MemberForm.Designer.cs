@@ -157,13 +157,15 @@ namespace ShabebaApp
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(174, 34);
             this.txtId.TabIndex = 9;
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(836, 107);
+            this.txtName.Location = new System.Drawing.Point(836, 105);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(174, 34);
             this.txtName.TabIndex = 10;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txtLastName
             // 
@@ -171,6 +173,7 @@ namespace ShabebaApp
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(174, 34);
             this.txtLastName.TabIndex = 11;
+            this.txtLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txtPhoneNumber
             // 
@@ -178,6 +181,7 @@ namespace ShabebaApp
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(174, 34);
             this.txtPhoneNumber.TabIndex = 14;
+            this.txtPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPhoneNumber_KeyPress);
             // 
             // txtMotherName
             // 
@@ -185,6 +189,7 @@ namespace ShabebaApp
             this.txtMotherName.Name = "txtMotherName";
             this.txtMotherName.Size = new System.Drawing.Size(174, 34);
             this.txtMotherName.TabIndex = 13;
+            this.txtMotherName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txtFatherName
             // 
@@ -192,6 +197,7 @@ namespace ShabebaApp
             this.txtFatherName.Name = "txtFatherName";
             this.txtFatherName.Size = new System.Drawing.Size(174, 34);
             this.txtFatherName.TabIndex = 12;
+            this.txtFatherName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // txtAddress
             // 
@@ -199,6 +205,7 @@ namespace ShabebaApp
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(174, 34);
             this.txtAddress.TabIndex = 16;
+            this.txtAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             // 
             // dtp
             // 
@@ -281,6 +288,7 @@ namespace ShabebaApp
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(270, 34);
             this.txtSearch.TabIndex = 28;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label10
             // 

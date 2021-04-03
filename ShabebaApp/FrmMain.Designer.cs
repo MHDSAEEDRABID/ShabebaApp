@@ -1,4 +1,4 @@
-﻿
+﻿using System.Data.SQLite;
 namespace ShabebaApp
 {
     partial class FrmMain

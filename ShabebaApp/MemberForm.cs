@@ -215,6 +215,48 @@ namespace ShabebaApp
             btnReset.PerformClick();
             MessageBox.Show("تمت تعديل بيانات العضو ","نجاح",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
+
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !(char.IsControl(e.KeyChar)) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSearch.Text))
+                Filldgv(LoadMemberForm(), dgv);
+            else
+            {
+                SQLiteConnection connection = new SQLiteConnection($@"Data Source={ConnectionString()}; Version = 3");
+                string search = Regex.Replace(txtSearch.Text, @"\s+", " ");
+                SQLiteCommand cmd = new SQLiteCommand("SELECT Members.Id, Members.FirstName, Members.LastName, Members.FatherName, Members.MotherName, Members.PhoneNumber, Members.AffiliationDate, Members.Address, Schools.name , Members.Description FROM[Members] JOIN [Schools] ON Members.SchoolId = Schools.Id WHERE Members.FirstName like '%"+search+"%'", connection);
+                connection.Open();
+                SQLiteDataReader data = cmd.ExecuteReader();
+                DataTable dt = new DataTable();
+                dt.Load(data);
+                Filldgv(dt, dgv);
+                connection.Close();
+            }
+        }
     }
 }
 
