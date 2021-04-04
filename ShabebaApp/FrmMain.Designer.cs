@@ -1,4 +1,4 @@
-﻿using System.Data.SQLite;
+﻿
 namespace ShabebaApp
 {
     partial class FrmMain
@@ -127,6 +127,8 @@ namespace ShabebaApp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1313, 700);
             this.Controls.Add(this.panel2);
+            this.MaximizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1100, 400);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Tajawal", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);

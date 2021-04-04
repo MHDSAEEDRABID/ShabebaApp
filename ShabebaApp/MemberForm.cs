@@ -70,10 +70,14 @@ namespace ShabebaApp
             {
                 schools = dbConnection.Query<School>("SELECT * FROM Schools").ToList();
             }
-            cbxSchool.DataSource = schools;
-            cbxSchool.ValueMember = "Id";
-            cbxSchool.DisplayMember = "name";
-            cbxSchool.AutoCompleteSource = AutoCompleteSource.ListItems;
+            if (schools.Count > 0)
+            {
+                cbxSchool.DataSource = schools;
+                cbxSchool.ValueMember = "Id";
+                cbxSchool.DisplayMember = "name";
+                cbxSchool.AutoCompleteSource = AutoCompleteSource.ListItems;
+            }
+            else { }
         }
         private void MemberForm_Load(object sender, EventArgs e)
         {
